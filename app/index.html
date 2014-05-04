@@ -1,0 +1,101 @@
+<!doctype html>
+
+<!-- Assign Angular Module -->
+<html ng-app="addressApp">
+<head>
+	<!-- Meta Info -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- optimize mobile viewport -->
+	<meta name="description" content="Address Application">
+	<meta name="author" content="Cihad Horuzoğlu">
+
+	<title>Address App</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+	<script src="core.js"></script> <!-- load our angular module and initialize it -->
+</head>
+<body ng-controller="MainController">
+	<div class="container">
+
+		<!-- Header -->
+		<div class="jumbotron text-center">
+			<h1>Adres Defterim</h1>
+		</div>
+
+		<div class="row">
+
+			<!-- New address section -->
+			<div class="col-md-5">
+				<h2 ng-hide="updating">Yeni Adres Ekle</h2>
+				<h2 ng-show="updating">Kayıtlı Adresi Güncelle</h2>
+
+				<form class="form-horizontal" role="form" ng-submit="setAddress()">
+				  <div class="form-group">
+				  	<label class="col-sm-4 control-label">Adı Soyadı :</label>
+				  	<div class="col-sm-8">
+				    	<input type="text" class="form-control" placeholder="Adı Soyadı" ng-model="formData.Name" required>
+				  	</div>
+				  </div>
+				  <div class="form-group">
+				  	<label class="col-sm-4 control-label">Telefon numarası :</label>
+				  	<div class="col-sm-8">
+				    	<input type="text" class="form-control" placeholder="Telefon numarası" ng-model="formData.Phone">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				  	<label class="col-sm-4 control-label">Şirket adı :</label>
+				  	<div class="col-sm-8">
+				    	<input type="text" class="form-control" placeholder="Şirket adı" ng-model="formData.Firm">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				  	<label class="col-sm-4 control-label">Şehir :</label>
+				  	<div class="col-sm-8">
+					    <select class="form-control" ng-model="formData.City" ng-change="updateRegions(formData.City)" ng-options="c.PKCityId as c.Name for c in cities">
+						    <option value="">Şehir Seçiniz</option>
+						</select>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				  	<label class="col-sm-4 control-label">Semt :</label>
+				  	<div class="col-sm-8">
+					    <select class="form-control" ng-model="formData.Region" required ng-options="r.PKRegionId as r.Name for r in regions">
+					    	<option value="">Semt Seçiniz</option>
+					    </select>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				  	<label class="col-sm-4 control-label">Adres :</label>
+				  	<div class="col-sm-8">
+				    	<textarea placeholder="Adres..." ng-model="formData.Address" class="form-control" row="3" required></textarea>
+				   	</div>
+				  </div>
+				  <button type="submit" class="btn btn-primary pull-right">Gönder</button>
+				  <button type="button" ng-click="clearForm()" class="btn btn-default pull-right clear">Temizle</button>
+				</form>
+			</div>
+
+			<!-- Saved address section -->
+			<div class="col-md-7">
+				<h2>Kayıtlı Adreslerim <span class="badge">{{addresses.length}}</span></h2>
+				<ul class="list-group">
+					<li class="list-group-item" ng-repeat="address in addresses">
+						<span class="name">{{address.Name}}</span> <span class="region">{{address.Address}}</span>
+						<div class="buttons">
+							<button type="button" class="btn btn-info edit" ng-click="editAddress(address._id)"><em class="glyphicon glyphicon-pencil"></em> Düzenle</button> 
+							<button type="button" class="btn btn-danger delete" ng-click="deleteAddress(address._id)"><em class="glyphicon glyphicon-remove"></em> Sil</button>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<div class="footer">
+	        <p>&copy; 2014 - <a href="http://twitter.com/cihadhoruzoglu">@cihadhoruzoglu</a></p>
+	    </div>
+	</div>
+</body>
+</html>

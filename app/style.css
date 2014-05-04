@@ -1,0 +1,36 @@
+body { 
+	padding-top:50px; 
+}
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  border-top: 1px solid #eee;
+}
+
+.badge {
+	vertical-align: middle;
+}
+
+.name {
+	display: inline-block;
+	min-width: 200px;
+}
+
+.region {
+	display: inline-block;
+	min-width: 250px;
+}
+
+.buttons {
+	display: inline-block;
+}
+
+h2 {
+	margin-bottom: 30px;
+}
+
+.clear { 
+	margin-right: 1em;
+}
