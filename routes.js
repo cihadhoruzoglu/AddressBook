@@ -71,7 +71,7 @@ module.exports = function(app) {
 	});
 
 	// Application start
-	app.get('*', function(req, res) {
+	app.get('/', function(req, res) {
 		res.sendfile('./app/index.html')
 	});
 }

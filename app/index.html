@@ -21,7 +21,13 @@
 
 		<!-- Header -->
 		<div class="jumbotron text-center">
+			<ul class="logos">
+				<li><img src="img/nodejs-logo.png"></li>
+				<li><img src="img/angularjs-logo.png"></li>
+				<li><img src="img/mongodb-logo.png"></li>
+			</ul>
 			<h1>Adres Defterim</h1>
+			<p>Node.js, Angular JS ve MongoDB ile RESTful api üzerinden POST, GET, PUT ve DELETE işlemlerini kullanan basit bir adres defterim uygulaması.</p>
 		</div>
 
 		<div class="row">
@@ -53,17 +59,13 @@
 				  <div class="form-group">
 				  	<label class="col-sm-4 control-label">Şehir :</label>
 				  	<div class="col-sm-8">
-					    <select class="form-control" ng-model="formData.City" ng-change="updateRegions(formData.City)" ng-options="c.PKCityId as c.Name for c in cities">
-						    <option value="">Şehir Seçiniz</option>
-						</select>
+				  		<input type="text" class="form-control" placeholder="Şehir" ng-model="formData.City">
 				    </div>
 				  </div>
 				  <div class="form-group">
 				  	<label class="col-sm-4 control-label">Semt :</label>
 				  	<div class="col-sm-8">
-					    <select class="form-control" ng-model="formData.Region" required ng-options="r.PKRegionId as r.Name for r in regions">
-					    	<option value="">Semt Seçiniz</option>
-					    </select>
+				  		<input type="text" class="form-control" placeholder="Semt" ng-model="formData.Region">
 				    </div>
 				  </div>
 				  <div class="form-group">
@@ -89,6 +91,9 @@
 						</div>
 					</li>
 				</ul>
+				<div class="alert alert-info" ng-show="addresses.length == 0">
+					<p>Kayıtlı bir adresiniz bulunmamaktadır.</p>
+				</div>
 			</div>
 		</div>
 

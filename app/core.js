@@ -4,13 +4,6 @@ function MainController($scope, $http) {
 
 	// INITIALIZE APP
 
-	// Get cities from CicekSepeti
-	$http.get("https://service.ciceksepeti.com/rest/api/CityList").success(function (data) {
-        $scope.cities = data.Cities;
-    }).error(function (data, status, header, config) {
-        if (error) console.log("Err", status);
-    });
-
     // when landing on the page, get all addresses and show them
 	$http.get('/api/addresses')
 		.success(function(data) {
@@ -22,15 +15,6 @@ function MainController($scope, $http) {
 
     // Init formData scope for communicate between html and controller
 	$scope.formData = {};
-
-    // Get regions from CicekSepeti
-    $scope.updateRegions = function(CityId) {
-    	$http.post("https://service.ciceksepeti.com/rest/api/Region", { "CityId": CityId, "FKProductGroupId": 1, "PKProductId": 238 }).success(function (data) {
-                $scope.regions = data.RegionList;
-            }).error(function (data, status, header, config) {
-                if (error) console.log("Err", status);
-            });
-    };
 
 	// when submitting the set form, send the form to the node API
 	$scope.setAddress = function() {

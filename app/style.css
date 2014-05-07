@@ -34,3 +34,12 @@ h2 {
 .clear { 
 	margin-right: 1em;
 }
+
+.logos li {
+	display: inline-block;
+	margin: 0 20px;
+}
+
+.logos li img {
+	max-width: 280px;
+}

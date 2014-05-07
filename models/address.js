@@ -6,7 +6,7 @@ module.exports = mongoose.model('Address', {
 	Name: String,
 	Phone: String,
 	Firm: String,
-	City: Number,
+	City: String,
 	Region: String,
 	Address: String
 });

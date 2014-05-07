@@ -1,9 +1,9 @@
 // Setup
-var express 	= require('express'),				// get express module
-	app 		= express(),						// create our app w/ express
-	mongoose	= require('mongoose'),				// mongoose for mongodb
-	port 		= process.env.PORT || 8090,			// set the port
-	database	= 'mongodb://localhost/cicekapp';	// load the database
+var express 	= require('express'),						// get express module
+	app 		= express(),								// create our app w/ express
+	mongoose	= require('mongoose'),						// mongoose for mongodb
+	port 		= process.env.PORT || 8090,					// set the port
+	database	= 'mongodb://localhost/addressbookdb';		// load the database
 
 // Configuration
 mongoose.connect(database);
@@ -20,4 +20,4 @@ require('./routes.js')(app);
 
 // Listen (start app with 'node server.js') 
 app.listen(port);
-console.log("App listening on port " + port);
+console.log("App listening on localhost:" + port);
